@@ -3,6 +3,7 @@ python:
   - "3.5"
 script:
   - coverage run python -m unittest
-install: true
+install:
+  - pip install coverage
 after_success:
   - coveralls
