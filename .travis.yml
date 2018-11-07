@@ -2,8 +2,9 @@ language: python
 python:
   - "3.5"
 script:
-  - coverage run python -m unittest
+  - coverage run -m unittest
 install:
   - pip install coverage
+  - pip install python-coveralls
 after_success:
   - coveralls
