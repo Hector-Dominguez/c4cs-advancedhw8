@@ -2,5 +2,7 @@ language: python
 python:
   - "3.5"
 script:
-  - python -m unittest
+  - coverage run python -m unittest
 install: true
+after_success:
+  - coveralls
