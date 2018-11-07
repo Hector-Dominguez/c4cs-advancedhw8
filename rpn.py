@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-
+from curses import wrapper
 import operator
-
+import curses
 
 
 operators = {
@@ -27,15 +27,25 @@ def calculate(myarg):
             arg1 = stack.pop()
             result = function(arg1, arg2)
             stack.append(result)
-        print(stack)
+        #print(stack)
     if len(stack) != 1:
         raise TypeError("Too many parameters")
     return stack.pop()
 
-def main():
+def main(stdscr):
+    curses.echo()
+    stdscr.clear()
+    curses.init_pair(1, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    stdscr.addstr(0, 0, "RPN Calculator\n",curses.color_pair(1) | curses.A_BLINK)
+    stdscr.refresh()
     while True:
-        result = calculate(input("rpn calc> "))
-        print("Result: ", result)
+        stdscr.addstr("Enter Input: ")
+        usrInput = stdscr.getstr()
+        if usrInput == "quit":
+            return
+        result = calculate(usrInput)
+        stdscr.addstr("Result of (%s) is %d\n" %(usrInput, result), curses.color_pair(2) | curses.A_UNDERLINE )
 
-if __name__ == '__main__':
-    main()
+        
+wrapper(main)
