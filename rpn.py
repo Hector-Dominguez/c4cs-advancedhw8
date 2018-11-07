@@ -47,5 +47,7 @@ def main(stdscr):
         result = calculate(usrInput)
         stdscr.addstr("Result of (%s) is %d\n" %(usrInput, result), curses.color_pair(2) | curses.A_UNDERLINE )
 
-        
-wrapper(main)
+if __name__ == "__main__":        
+    print("hello")
+    wrapper(main)
+    
