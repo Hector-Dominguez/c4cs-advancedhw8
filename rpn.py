@@ -3,6 +3,7 @@
 import operator
 
 
+
 operators = {
     '+': operator.add,
     '-': operator.sub,
@@ -10,6 +11,9 @@ operators = {
     '/': operator.truediv,
     '^': operator.pow,
 }
+
+def hello():
+    stack = list()
 
 def calculate(myarg):
     stack = list()
